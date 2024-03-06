@@ -1,76 +1,51 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import pyodbc
  
-# Set page configuration
 st.set_page_config(
-    page_title='View Data',
+    page_title='Home page',
     page_icon=':)',
     layout='wide'
 )
-# Title of the page
-st.title('Vodafone Data')
  
-# Cache the database connection function
-# @st.cache(allow_output_mutation=True)
-def establish_connection():
-    connection = pyodbc.connect(
-        "DRIVER={SQL Server};SERVER="
-        + st.secrets["SERVER"]
-        + ";DATABASE="
-        + st.secrets["DATABASE"]
-        + ";UID="
-        + st.secrets["UID"]
-        + ";PWD="
-        + st.secrets["PWD"]
+def main():
+    st.title('Customer Churn Prediction App')
+    st.markdown(
+        """
+        <style>
+            .title {
+                text-align: center;
+                font-size: 36px;
+                color: #0066ff;
+                padding-bottom: 20px;
+            }
+            .info {
+                font-size: 18px;
+                color: #333333;
+                line-height: 1.6;
+            }
+            .subheader {
+                font-size: 24px;
+                color: #009933;
+                padding-top: 20px;
+            }
+            .social-links {
+                font-size: 20px;
+                color: #0000ff;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True
     )
-    return connection
  
-# Cache the database query results
-# @st.cache
-def query_database(query):
-    conn = establish_connection()
-    try:
-        with conn.cursor() as cur:
-            cur.execute(query)
-            rows = cur.fetchall()
-            # Convert fetched rows into a DataFrame
-            df = pd.DataFrame.from_records(data=rows, columns=[column[0] for column in cur.description])
-        return df
-    finally:
-        # Close the database connection
-        conn.close()
+    st.write('Welcome to the Customer Churn Prediction App! This app predicts whether a customer will churn or not based on various features.')
  
-# Function to select features based on type
-def select_features(feature_type, df):
-    if feature_type == 'Numerical Features':
-        # Filter numerical features
-        numerical_df = df.select_dtypes(include=np.number)
-        return numerical_df
-    elif feature_type == 'Categorical Features':
-        # Filter categorical features
-        categorical_df = df.select_dtypes(include='object')
-        return categorical_df
-    else:
-        # Return the entire DataFrame
-        return df
+    st.subheader('About the App')
+    st.write("""
+    Customer churn, also known as customer attrition, occurs when customers stop doing business with a company. This application aims to predict customer churn using machine learning algorithms.
+    """)
  
-if __name__ == '__main__':
-    # Define the database query
-    query = "select * from LP2_Telco_churn_first_3000"
-    # Execute the query and get the data DataFrame
-    data_df = query_database(query)
- 
-    # Selectbox to choose the type of features to display
-    selected_feature_type = st.selectbox("Select data features", options=['All Features', 'Numerical Features', 'Categorical Features'],
-                                        key="selected_columns")
-   
-    # Display the selected features
-    if selected_feature_type == 'All Features':
-        # Show all features if selected
-        st.write(data_df)
-    else:
-        # Show selected type of features
-        st.write(select_features(selected_feature_type, data_df))
-        
+    st.subheader('Source Code')
+    st.write("The source code for this application is available on GitHub.")
+    st.markdown("[![GitHub](https://img.shields.io/badge/GitHub-View%20on%20GitHub-blue?logo=GitHub)](https://github.com/prynz-eyram/Customer-Churn-Prediction-App)")
+    
