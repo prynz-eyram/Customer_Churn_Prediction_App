@@ -1,0 +1,15 @@
+credentials:
+  usernames:
+    deofis:
+      email: padzanku@gmail.com
+      logged_in: False # Will be managed automatically
+      name: Prince Eyram Kofi Adzanku
+      password: 'abc123' # Will be hashed automatically
+cookie:
+  expiry_days: 30
+  key: cookie_signature_key # Must be string
+  name: cookie_name
+preauthorized:
+  emails:
+  - prince.adzanku@azubiafrica.org
+users:

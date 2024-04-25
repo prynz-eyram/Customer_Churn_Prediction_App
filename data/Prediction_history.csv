@@ -1,0 +1,5 @@
+gender,SeniorCitizen,Partner,Dependents,tenure,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges,Date_of_prediction,Model
+Male,0,Yes,Yes,0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,19,2024-03-07,Logistic Model
+Male,0,Yes,Yes,0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,19,2024-03-07,Logistic Model
+Male,0,Yes,Yes,0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,19,2024-03-07,Logistic Model
+Male,0,Yes,Yes,0,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,19,2024-04-25,Logistic Model
